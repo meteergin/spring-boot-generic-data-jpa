@@ -24,7 +24,7 @@ public class CustomerController {
 
   private final CustomerService customerService;
 
-  @GetMapping("/all")
+  @GetMapping
   public ResponseEntity<List<Customer>> findAll() {
     List<Customer> customerList = customerService.findAll();
     return new ResponseEntity<>(customerList,
@@ -32,7 +32,7 @@ public class CustomerController {
   }
 
   @GetMapping("/{id}")
-  public ResponseEntity<Object> findById(@PathVariable Long id) {
+  public ResponseEntity<Customer> findById(@PathVariable Long id) {
     Optional<Customer> customer = customerService.findById(id);
     if (customer.isPresent()) {
       return new ResponseEntity<>(customer.get(),

@@ -9,6 +9,8 @@ public interface AbstractBaseService<T extends AbstractBaseEntity, ID extends Se
 
   T save(T entity);
 
+  T saveAndFlush(T entity);
+
   List<T> findAll();
 
   Optional<T> findById(ID entityId);

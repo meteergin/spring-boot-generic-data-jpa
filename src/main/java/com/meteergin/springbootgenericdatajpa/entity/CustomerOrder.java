@@ -8,7 +8,7 @@ import lombok.Data;
 
 @Entity
 @Data
-public class Order extends AbstractBaseEntity {
+public class CustomerOrder extends AbstractBaseEntity {
 
   @OneToOne(cascade = CascadeType.ALL)
   @JoinColumn(name = "customer_id", referencedColumnName = "id")

@@ -23,6 +23,11 @@ public abstract class AbstractBaseRepositoryImp<T extends AbstractBaseEntity, ID
   }
 
   @Override
+  public T saveAndFlush(T entity) {
+    return abstractBaseRepository.saveAndFlush(entity);
+  }
+
+  @Override
   public List<T> findAll() {
     return abstractBaseRepository.findAll();
   }

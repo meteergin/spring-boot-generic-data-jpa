@@ -15,7 +15,7 @@ public class OrderItem extends AbstractBaseEntity {
   private Product product;
   @OneToOne(cascade = CascadeType.ALL)
   @JoinColumn(name = "order_id", referencedColumnName = "id")
-  private Order order;
+  private CustomerOrder order;
   private Integer quantity;
   
 }

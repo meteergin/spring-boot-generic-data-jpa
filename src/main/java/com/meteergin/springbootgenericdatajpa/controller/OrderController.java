@@ -1,9 +1,11 @@
 package com.meteergin.springbootgenericdatajpa.controller;
 
-import com.meteergin.springbootgenericdatajpa.entity.Order;
+import com.meteergin.springbootgenericdatajpa.entity.CustomerOrder;
 import com.meteergin.springbootgenericdatajpa.service.OrderService;
 import java.util.List;
 import lombok.AllArgsConstructor;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -19,14 +21,15 @@ public class OrderController {
 
   private final OrderService orderService;
 
-  @GetMapping("/all")
-  public List<Order> findAll() {
-    return orderService.findAll();
+  @GetMapping
+  public ResponseEntity<List<CustomerOrder>> findAll() {
+    return new ResponseEntity<>(orderService.findAll(),
+        HttpStatus.OK);
   }
 
   @PostMapping
-  public Order create(@RequestBody Order order) {
-    return orderService.save(order);
+  public ResponseEntity<CustomerOrder> create(@RequestBody CustomerOrder order) {
+    return new ResponseEntity<>(orderService.save(order), HttpStatus.CREATED);
   }
 
 }
